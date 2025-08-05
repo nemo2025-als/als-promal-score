@@ -45,12 +45,7 @@ function calculatePromalScore(albumin, prealbumin, transferrin) {
     
     return {
         score: score,
-        prediction: prediction,
-        standardizedValues: {
-            albumin: albuminStd,
-            prealbumin: prealbuminStd,
-            transferrin: transferrinStd
-        }
+        prediction: prediction
     };
 }
 
@@ -65,7 +60,7 @@ document.getElementById('promal-form').addEventListener('submit', function(e) {
     
     // Valida i valori
     if (isNaN(albumin) || isNaN(prealbumin) || isNaN(transferrin)) {
-        alert('Per favore inserire valori numerici validi.');
+        alert('Please insert valid numeric values.');
         return;
     }
     
@@ -73,35 +68,48 @@ document.getElementById('promal-form').addEventListener('submit', function(e) {
     const result = calculatePromalScore(albumin, prealbumin, transferrin);
     
     // Mostra i risultati
-    showResults(result, { albumin, prealbumin, transferrin });
+    showResults(result);
 });
 
 // Funzione per mostrare i risultati
-function showResults(result, inputValues) {
+function showResults(result) {
     const resultsSection = document.getElementById('results-section');
     const predictionValue = document.getElementById('prediction-value');
     const resultDescription = document.getElementById('result-description');
     const resultCard = document.getElementById('result-card');
     
-    // Imposta la predizione e il colore
-    predictionValue.textContent = result.prediction;
+    // Imposta la predizione
+    predictionValue.textContent = result.prediction.toUpperCase();
     
     if (result.prediction === 'Short Survival') {
         resultCard.className = 'result-card short-survival';
         resultDescription.innerHTML = `
-            <strong>Interpretazione:</strong> Il punteggio PRO-MAL di ${result.score.toFixed(4)} 
-            indica una predizione di <strong>sopravvivenza breve</strong> per il paziente con SLA.
+            <strong>Interpretation:</strong> Based on the entered plasmatic markers, 
+            the predictive model indicates a <strong>short survival</strong> prognosis for the ALS patient.
             <br><br>
-            Si raccomanda un monitoraggio clinico più frequente e la valutazione di interventi 
-            terapeutici appropriati.
+            <strong>Clinical Recommendations:</strong>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li>Intensify clinical monitoring with more frequent visits</li>
+                <li>Evaluate optimization of supportive therapy</li>
+                <li>Consider early discussion of advance care directives</li>
+                <li>Ensure adequate psychological support for patient and family</li>
+                <li>Assess need for specialized palliative care consultation</li>
+            </ul>
         `;
     } else {
         resultCard.className = 'result-card long-survival';
         resultDescription.innerHTML = `
-            <strong>Interpretazione:</strong> Il punteggio PRO-MAL di ${result.score.toFixed(4)} 
-            indica una predizione di <strong>sopravvivenza prolungata</strong> per il paziente con SLA.
+            <strong>Interpretation:</strong> Based on the entered plasmatic markers, 
+            the predictive model indicates a <strong>long survival</strong> prognosis for the ALS patient.
             <br><br>
-            Continuare con il monitoraggio standard e il piano terapeutico attuale.
+            <strong>Clinical Recommendations:</strong>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li>Continue with standard clinical monitoring</li>
+                <li>Maintain current therapeutic plan</li>
+                <li>Schedule regular follow-ups to monitor disease progression</li>
+                <li>Encourage participation in rehabilitation and support programs</li>
+                <li>Consider enrollment in clinical trials if appropriate</li>
+            </ul>
         `;
     }
     
