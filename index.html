@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRO-MAL Score Calculator | Predizione Sopravvivenza SLA</title>
+    <title>PRO-MAL Score Calculator | ALS Survival Prediction Tool</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -12,53 +12,40 @@
         <!-- Header -->
         <header class="header">
             <h1 class="main-title">PRO-MAL Score Calculator</h1>
-            <p class="subtitle">Predizione dicotomica della sopravvivenza in pazienti SLA basata su marker plasmatici</p>
+            <p class="subtitle">ALS survival prediction model based on plasmatic markers</p>
         </header>
-
-        <!-- Info Section -->
-        <section class="info-section">
-            <h2>Informazioni sul PRO-MAL Score</h2>
-            <div class="info-content">
-                <p>Il PRO-MAL Score è uno strumento predittivo che utilizza tre marker plasmatici per classificare la sopravvivenza dei pazienti con SLA in due categorie:</p>
-                <ul>
-                    <li><strong>Short Survival</strong>: Score ≤ 0.19</li>
-                    <li><strong>Long Survival</strong>: Score > 0.19</li>
-                </ul>
-                <p>I marker utilizzati sono: Transferrina (mg/dL), Prealbumina (mg/dL) e Albumina (g/dL).</p>
-            </div>
-        </section>
 
         <!-- Calculator Form -->
         <section class="form-section">
-            <h2>Inserire i Valori dei Marker Plasmatici</h2>
+            <h2>Insert Values of Plasmatic Markers</h2>
             <form id="promal-form">
                 <div class="form-fields">
                     <div class="form-group">
-                        <label for="transferrin">Transferrina</label>
+                        <label for="transferrin">Transferrin</label>
                         <input type="number" 
                                id="transferrin" 
                                name="transferrin" 
                                step="0.1" 
                                min="0" 
-                               max="500"
+                               max="2000"
                                placeholder="mg/dL"
                                required>
-                        <small class="field-hint">Valore normale: 170-370 mg/dL</small>
+                        <small class="field-hint">Normal range: 200-360 mg/dL; </small>
                     </div>
                     <div class="form-group">
-                        <label for="prealbumin">Prealbumina</label>
+                        <label for="prealbumin">Prealbumin</label>
                         <input type="number" 
                                id="prealbumin" 
                                name="prealbumin" 
-                               step="0.1" 
+                               step="0.01" 
                                min="0" 
                                max="50"
                                placeholder="mg/dL"
                                required>
-                        <small class="field-hint">Valore normale: 15-35 mg/dL</small>
+                        <small class="field-hint">Normal range: 15-35 mg/dL</small>
                     </div>
                     <div class="form-group">
-                        <label for="albumin">Albumina</label>
+                        <label for="albumin">Albumin</label>
                         <input type="number" 
                                id="albumin" 
                                name="albumin" 
@@ -67,42 +54,33 @@
                                max="10"
                                placeholder="g/dL"
                                required>
-                        <small class="field-hint">Valore normale: 3.5-5.0 g/dL</small>
+                        <small class="field-hint">Normal range: 3.5-5.0 g/dL</small>
                     </div>
                 </div>
-                <button type="submit" class="calculate-btn">Calcola PRO-MAL Score</button>
+                <button type="submit" class="calculate-btn">Calculate PRO-MAL Score</button>
             </form>
         </section>
 
         <!-- Results Section -->
         <section id="results-section" class="results-section hidden">
-            <h2>Risultato PRO-MAL Score</h2>
+            <h2>Prediction Result</h2>
             <div class="result-card" id="result-card">
+                <!-- Cancellabile se necessario -->
                 <div class="score-display">
-                    <span class="score-label">PRO-MAL Score:</span>
                     <span class="score-value" id="score-value"></span>
                 </div>
                 <div class="prediction-display" id="prediction-display">
-                    <span class="prediction-label">Predizione:</span>
                     <span class="prediction-value" id="prediction-value"></span>
                 </div>
                 <p class="result-description" id="result-description"></p>
             </div>
             
-            <!-- Dettagli Calcolo -->
-            <div class="calculation-details" id="calculation-details">
-                <h3>Dettagli del Calcolo</h3>
-                <div class="details-grid" id="details-grid">
-                    <!-- I dettagli verranno inseriti dinamicamente -->
-                </div>
-            </div>
-            
-            <button class="reset-btn" onclick="resetCalculator()">Nuovo Calcolo</button>
+            <button class="reset-btn" onclick="resetCalculator()">New Prediction</button>
         </section>
 
         <!-- Disclaimer -->
         <footer class="disclaimer">
-            <p><strong>Disclaimer:</strong> Questo strumento è fornito solo a scopo informativo e di ricerca. Non sostituisce il giudizio clinico professionale. Consultare sempre un medico specialista per decisioni cliniche.</p>
+            <p><strong>Disclaimer:</strong> This tool is provided for informational and research purposes only. It does not replace professional clinical judgement. Always consult a medical specialist for clinical decisions.</p>
         </footer>
     </div>
 
