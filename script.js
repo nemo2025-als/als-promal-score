@@ -79,14 +79,9 @@ document.getElementById('promal-form').addEventListener('submit', function(e) {
 // Funzione per mostrare i risultati
 function showResults(result, inputValues) {
     const resultsSection = document.getElementById('results-section');
-    const scoreValue = document.getElementById('score-value');
     const predictionValue = document.getElementById('prediction-value');
     const resultDescription = document.getElementById('result-description');
     const resultCard = document.getElementById('result-card');
-    const detailsGrid = document.getElementById('details-grid');
-    
-    // Imposta il valore dello score
-    scoreValue.textContent = result.score.toFixed(4);
     
     // Imposta la predizione e il colore
     predictionValue.textContent = result.prediction;
@@ -109,28 +104,6 @@ function showResults(result, inputValues) {
             Continuare con il monitoraggio standard e il piano terapeutico attuale.
         `;
     }
-    
-    // Mostra i dettagli del calcolo
-    detailsGrid.innerHTML = `
-        <div class="detail-item">
-            <h4>Albumina</h4>
-            <p>Valore inserito: ${inputValues.albumin} g/dL</p>
-            <p>Valore standardizzato: ${result.standardizedValues.albumin.toFixed(4)}</p>
-            <p>Contributo allo score: ${(result.standardizedValues.albumin * promalParams.albumin.eigenvector).toFixed(4)}</p>
-        </div>
-        <div class="detail-item">
-            <h4>Prealbumina</h4>
-            <p>Valore inserito: ${inputValues.prealbumin} mg/dL</p>
-            <p>Valore standardizzato: ${result.standardizedValues.prealbumin.toFixed(4)}</p>
-            <p>Contributo allo score: ${(result.standardizedValues.prealbumin * promalParams.prealbumin.eigenvector).toFixed(4)}</p>
-        </div>
-        <div class="detail-item">
-            <h4>Transferrina</h4>
-            <p>Valore inserito: ${inputValues.transferrin} mg/dL</p>
-            <p>Valore standardizzato: ${result.standardizedValues.transferrin.toFixed(4)}</p>
-            <p>Contributo allo score: ${(result.standardizedValues.transferrin * promalParams.transferrin.eigenvector).toFixed(4)}</p>
-        </div>
-    `;
     
     // Mostra la sezione dei risultati
     resultsSection.classList.remove('hidden');
