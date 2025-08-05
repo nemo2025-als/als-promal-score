@@ -173,28 +173,9 @@ body {
     color: white;
 }
 
-.score-display {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-.score-label {
-    font-weight: 400;
-}
-
-.score-value {
-    font-weight: 700;
-    font-size: 1.3em;
-    margin-left: 10px;
-}
-
 .prediction-display {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 30px;
-}
-
-.prediction-label {
-    font-weight: 400;
 }
 
 .prediction-value {
@@ -202,53 +183,25 @@ body {
     display: block;
     margin-top: 10px;
     font-size: 1.2em;
+    letter-spacing: 2px;
 }
 
 .result-description {
     font-size: 1.1em;
-    line-height: 1.6;
-    text-align: left;
-    background: rgba(255,255,255,0.2);
-    padding: 20px;
+    line-height: 1.8;
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    padding: 25px;
     border-radius: 10px;
 }
 
-/* Calculation Details */
-.calculation-details {
-    margin-top: 30px;
-    padding: 30px;
-    background: #f8f9fa;
-    border-radius: 15px;
+.result-description ul {
+    list-style-type: disc;
+    margin-left: 30px;
 }
 
-.calculation-details h3 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: left;
-}
-
-.detail-item {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.detail-item h4 {
-    color: #3498db;
-    margin-bottom: 10px;
-}
-
-.detail-item p {
-    color: #555;
-    margin-bottom: 5px;
-    font-size: 0.95em;
+.result-description li {
+    margin-bottom: 8px;
 }
 
 .reset-btn {
@@ -294,16 +247,12 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .details-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .result-card {
         padding: 30px 20px;
     }
     
     .prediction-display {
-        font-size: 1.5em;
+        font-size: 2em;
     }
 }
 
