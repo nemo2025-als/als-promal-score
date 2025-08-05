@@ -84,13 +84,12 @@ function showResults(result) {
     if (result.prediction === 'Short Survival') {
         resultCard.className = 'result-card short-survival';
         resultDescription.innerHTML = `
-            Based on the entered plasmatic markers, the predictive model indicates a
-            <strong>short survival</strong> prognosis for this ALS patient.
-            <br><br>
-            <strong>Median survival post-evaluation:</strong> 14.83 months
-            <strong>1-year survival probability:</strong> 57%
+            Based on the entered plasmatic markers, the predictive model indicates a <strong>short survival</strong> prognosis.
+            <br><br><br>
+            <strong>Median survival post-evaluation:</strong> 14.83 months<br>
+            <strong>1-year survival probability:</strong> 57%<br>
             <strong>2-year survival probability:</strong> 33%
-            <br><br>
+            <br><br><br>
             <strong>Clinical Recommendations:</strong>
             <ul style="text-align: left; margin-top: 10px;">
                 <li>Intensify clinical monitoring with more frequent visits</li>
@@ -103,13 +102,12 @@ function showResults(result) {
     } else {
         resultCard.className = 'result-card long-survival';
         resultDescription.innerHTML = `
-            Based on the entered plasmatic markers, the predictive model indicates a
-            <strong>long survival</strong> prognosis for this ALS patient.
-            <br><br>
-            <strong>Median survival post-evaluation:</strong> 25.10 months
-            <strong>1-year survival probability:</strong> 72%
+            Based on the entered plasmatic markers, the predictive model indicates a <strong>long survival</strong> prognosis.
+            <br><br><br>
+            <strong>Median survival post-evaluation:</strong> 25.10 months<br>
+            <strong>1-year survival probability:</strong> 72%<br>
             <strong>2-year survival probability:</strong> 53%
-            <br><br>
+            <br><br><br>
             <strong>Clinical Recommendations:</strong>
             <ul style="text-align: left; margin-top: 10px;">
                 <li>Continue with standard clinical monitoring</li>
