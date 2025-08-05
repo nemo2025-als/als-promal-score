@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALS PEG Prediction Model | NEMO Clinical Centre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Logo -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="logo-nemo.png" alt="Centro NEMO" class="logo">
+            </div>
+            <h1 class="main-title">ALS PEG Prediction Model</h1>
+            <p class="subtitle">Prediction of PEG placement at 6 months</p>
+        </header>
+
+        <!-- Model Selection -->
+        <section class="model-selection">
+            <h2>Select Predictive Model</h2>
+            <div class="model-cards">
+                <div class="model-card" data-model="1">
+                    <h3>A-PM</h3>
+                    <p>Anamnestic<br>Prediction Model</p>
+                    <button class="select-btn" onclick="selectModel(1)">Select</button>
+                </div>
+                <div class="model-card" data-model="2">
+                    <h3>AF-PM</h3>
+                    <p>Anamnestic and Functional<br>Prediction Model</p>
+                    <button class="select-btn" onclick="selectModel(2)">Select</button>
+                </div>
+                <div class="model-card" data-model="3">
+                    <h3>AN-PM</h3>
+                    <p>Anamnestic and Nutritional<br>Prediction Model</p>
+                    <button class="select-btn" onclick="selectModel(3)">Select</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Form  -->
+        <section id="form-section" class="form-section hidden">
+            <h2 id="model-title"></h2>
+            <form id="prediction-form">
+                <div id="form-fields" class="form-fields">
+                    <!-- These field will be generated dynamically -->
+                </div>
+                <button type="submit" class="calculate-btn">Calculate Prediction</button>
+            </form>
+        </section>
+
+        <!-- Results -->
+        <section id="results-section" class="results-section hidden">
+            <h2>Probability Result</h2>
+            <div class="result-card">
+                <p class="result-description" id="prob-description">
+                    <!-- Probability description will be inserted here -->
+                </p>
+                <div class="result-interpretation" id="result-interpretation">
+                    <!-- Cohort interpretation will be inserted here -->
+                </div>
+            </div>
+            <button class="reset-btn" onclick="resetCalculator()">New Prediction</button>
+        </section>
+    </div>
+
+        <!-- Firebase SDK versione compat -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
