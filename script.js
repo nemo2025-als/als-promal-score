@@ -84,8 +84,12 @@ function showResults(result) {
     if (result.prediction === 'Short Survival') {
         resultCard.className = 'result-card short-survival';
         resultDescription.innerHTML = `
-            <strong>Interpretation:</strong> Based on the entered plasmatic markers, 
-            the predictive model indicates a <strong>short survival</strong> prognosis for the ALS patient.
+            Based on the entered plasmatic markers, the predictive model indicates a
+            <strong>short survival</strong> prognosis for this ALS patient.
+            <br><br>
+            <strong>Median survival post-evaluation:</strong> 14.83 months
+            <strong>1-year survival probability:</strong> 57%
+            <strong>2-year survival probability:</strong> 33%
             <br><br>
             <strong>Clinical Recommendations:</strong>
             <ul style="text-align: left; margin-top: 10px;">
@@ -99,8 +103,12 @@ function showResults(result) {
     } else {
         resultCard.className = 'result-card long-survival';
         resultDescription.innerHTML = `
-            <strong>Interpretation:</strong> Based on the entered plasmatic markers, 
-            the predictive model indicates a <strong>long survival</strong> prognosis for the ALS patient.
+            Based on the entered plasmatic markers, the predictive model indicates a
+            <strong>long survival</strong> prognosis for this ALS patient.
+            <br><br>
+            <strong>Median survival post-evaluation:</strong> 25.10 months
+            <strong>1-year survival probability:</strong> 72%
+            <strong>2-year survival probability:</strong> 53%
             <br><br>
             <strong>Clinical Recommendations:</strong>
             <ul style="text-align: left; margin-top: 10px;">
