@@ -3,72 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALS PEG Prediction Model | NEMO Clinical Centre</title>
+    <title>PRO-MAL Score Calculator | Predizione Sopravvivenza SLA</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <!-- Header with Logo -->
+        <!-- Header -->
         <header class="header">
-            <div class="logo-container">
-                <img src="logo-nemo.png" alt="Centro NEMO" class="logo">
-            </div>
-            <h1 class="main-title">ALS PEG Prediction Model</h1>
-            <p class="subtitle">Prediction of PEG placement at 6 months</p>
+            <h1 class="main-title">PRO-MAL Score Calculator</h1>
+            <p class="subtitle">Predizione dicotomica della sopravvivenza in pazienti SLA basata su marker plasmatici</p>
         </header>
 
-        <!-- Model Selection -->
-        <section class="model-selection">
-            <h2>Select Predictive Model</h2>
-            <div class="model-cards">
-                <div class="model-card" data-model="1">
-                    <h3>A-PM</h3>
-                    <p>Anamnestic<br>Prediction Model</p>
-                    <button class="select-btn" onclick="selectModel(1)">Select</button>
-                </div>
-                <div class="model-card" data-model="2">
-                    <h3>AF-PM</h3>
-                    <p>Anamnestic and Functional<br>Prediction Model</p>
-                    <button class="select-btn" onclick="selectModel(2)">Select</button>
-                </div>
-                <div class="model-card" data-model="3">
-                    <h3>AN-PM</h3>
-                    <p>Anamnestic and Nutritional<br>Prediction Model</p>
-                    <button class="select-btn" onclick="selectModel(3)">Select</button>
-                </div>
+        <!-- Info Section -->
+        <section class="info-section">
+            <h2>Informazioni sul PRO-MAL Score</h2>
+            <div class="info-content">
+                <p>Il PRO-MAL Score è uno strumento predittivo che utilizza tre marker plasmatici per classificare la sopravvivenza dei pazienti con SLA in due categorie:</p>
+                <ul>
+                    <li><strong>Short Survival</strong>: Score ≤ 0.19</li>
+                    <li><strong>Long Survival</strong>: Score > 0.19</li>
+                </ul>
+                <p>I marker utilizzati sono: Transferrina (mg/dL), Prealbumina (mg/dL) e Albumina (g/dL).</p>
             </div>
         </section>
 
-        <!-- Dynamic Form  -->
-        <section id="form-section" class="form-section hidden">
-            <h2 id="model-title"></h2>
-            <form id="prediction-form">
-                <div id="form-fields" class="form-fields">
-                    <!-- These field will be generated dynamically -->
+        <!-- Calculator Form -->
+        <section class="form-section">
+            <h2>Inserire i Valori dei Marker Plasmatici</h2>
+            <form id="promal-form">
+                <div class="form-fields">
+                    <div class="form-group">
+                        <label for="transferrin">Transferrina</label>
+                        <input type="number" 
+                               id="transferrin" 
+                               name="transferrin" 
+                               step="0.1" 
+                               min="0" 
+                               max="500"
+                               placeholder="mg/dL"
+                               required>
+                        <small class="field-hint">Valore normale: 170-370 mg/dL</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="prealbumin">Prealbumina</label>
+                        <input type="number" 
+                               id="prealbumin" 
+                               name="prealbumin" 
+                               step="0.1" 
+                               min="0" 
+                               max="50"
+                               placeholder="mg/dL"
+                               required>
+                        <small class="field-hint">Valore normale: 15-35 mg/dL</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="albumin">Albumina</label>
+                        <input type="number" 
+                               id="albumin" 
+                               name="albumin" 
+                               step="0.01" 
+                               min="0" 
+                               max="10"
+                               placeholder="g/dL"
+                               required>
+                        <small class="field-hint">Valore normale: 3.5-5.0 g/dL</small>
+                    </div>
                 </div>
-                <button type="submit" class="calculate-btn">Calculate Prediction</button>
+                <button type="submit" class="calculate-btn">Calcola PRO-MAL Score</button>
             </form>
         </section>
 
-        <!-- Results -->
+        <!-- Results Section -->
         <section id="results-section" class="results-section hidden">
-            <h2>Probability Result</h2>
-            <div class="result-card">
-                <p class="result-description" id="prob-description">
-                    <!-- Probability description will be inserted here -->
-                </p>
-                <div class="result-interpretation" id="result-interpretation">
-                    <!-- Cohort interpretation will be inserted here -->
+            <h2>Risultato PRO-MAL Score</h2>
+            <div class="result-card" id="result-card">
+                <div class="score-display">
+                    <span class="score-label">PRO-MAL Score:</span>
+                    <span class="score-value" id="score-value"></span>
+                </div>
+                <div class="prediction-display" id="prediction-display">
+                    <span class="prediction-label">Predizione:</span>
+                    <span class="prediction-value" id="prediction-value"></span>
+                </div>
+                <p class="result-description" id="result-description"></p>
+            </div>
+            
+            <!-- Dettagli Calcolo -->
+            <div class="calculation-details" id="calculation-details">
+                <h3>Dettagli del Calcolo</h3>
+                <div class="details-grid" id="details-grid">
+                    <!-- I dettagli verranno inseriti dinamicamente -->
                 </div>
             </div>
-            <button class="reset-btn" onclick="resetCalculator()">New Prediction</button>
+            
+            <button class="reset-btn" onclick="resetCalculator()">Nuovo Calcolo</button>
         </section>
-    </div>
 
-        <!-- Firebase SDK versione compat -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+        <!-- Disclaimer -->
+        <footer class="disclaimer">
+            <p><strong>Disclaimer:</strong> Questo strumento è fornito solo a scopo informativo e di ricerca. Non sostituisce il giudizio clinico professionale. Consultare sempre un medico specialista per decisioni cliniche.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
