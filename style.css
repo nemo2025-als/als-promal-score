@@ -109,14 +109,14 @@ body {
     font-weight: 600;
     margin-bottom: 8px;
     color: #34495e;
-    font-size: 1.1em;
+    font-size: 1.6em;
 }
 
 .form-group input {
     padding: 12px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 1em;
+    font-size: 1.5em;
     transition: border-color 0.3s ease;
 }
 
@@ -127,7 +127,7 @@ body {
 
 .field-hint {
     margin-top: 5px;
-    font-size: 0.85em;
+    font-size: 1.35em;
     color: #7f8c8d;
 }
 
@@ -137,7 +137,7 @@ body {
     border: none;
     padding: 15px 40px;
     border-radius: 30px;
-    font-size: 1.1em;
+    font-size: 1.6em;
     font-weight: 600;
     cursor: pointer;
     display: block;
@@ -183,7 +183,7 @@ body {
 }
 
 .prediction-display {
-    font-size: 2.5em;
+    font-size: 3.0em;
     margin-bottom: 30px;
 }
 
@@ -191,12 +191,12 @@ body {
     font-weight: 700;
     display: block;
     margin-top: 10px;
-    font-size: 1.2em;
+    font-size: 1.7em;
     letter-spacing: 2px;
 }
 
 .result-description {
-    font-size: 1.1em;
+    font-size: 1.6em;
     line-height: 1.8;
     text-align: center;
     background: rgba(255,255,255,0.15);
@@ -219,7 +219,7 @@ body {
     border: none;
     padding: 15px 40px;
     border-radius: 30px;
-    font-size: 1.1em;
+    font-size: 1.6em;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -238,7 +238,7 @@ body {
     margin-top: 40px;
     text-align: center;
     color: #7f8c8d;
-    font-size: 0.9em;
+    font-size: 1.4em;
 }
 
 /* Utility Classes */
@@ -249,7 +249,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .main-title {
-        font-size: 2em;
+        font-size: 2.5em;
     }
     
     .form-fields {
@@ -261,17 +261,17 @@ body {
     }
     
     .prediction-display {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 }
 
 @media (max-width: 480px) {
     .main-title {
-        font-size: 1.5em;
+        font-size: 2.0em;
     }
     
     .subtitle {
-        font-size: 1em;
+        font-size: 1.5em;
     }
     
     .container {
